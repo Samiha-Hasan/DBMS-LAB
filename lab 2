@@ -1,0 +1,490 @@
+Setting environment for using XAMPP for Windows.
+Hp@DESKTOP-M0QDQ9G d:\ulu
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| your_database_name |
++--------------------+
+6 rows in set (0.074 sec)
+
+MariaDB [(none)]> CREATE DATABASE SAMIHA;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| samiha             |
+| test               |
+| your_database_name |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> USE SAMIHA;
+Database changed
+MariaDB [SAMIHA]> CREATE TABLE Lab_grades (
+    -> student_id CHAR(4),
+    -> name VARCHAR(30),
+    -> major CHAR(3),
+    -> section CHAR(1),
+    -> days_present INT,
+    -> project_marks DOUBLE,
+    -> cgpa DECIMAL(3,2),
+    -> submission_date DATE
+    -> );
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [SAMIHA]> SHOW TABLES;
++------------------+
+| Tables_in_samiha |
++------------------+
+| lab_grades       |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| student_id      | char(4)      | YES  |     | NULL    |       |
+| name            | varchar(30)  | YES  |     | NULL    |       |
+| major           | char(3)      | YES  |     | NULL    |       |
+| section         | char(1)      | YES  |     | NULL    |       |
+| days_present    | int(11)      | YES  |     | NULL    |       |
+| project_marks   | double       | YES  |     | NULL    |       |
+| cgpa            | decimal(3,2) | YES  |     | NULL    |       |
+| submission_date | date         | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.029 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s001', 'Abir',
+    -> 'CS', '1', 10, 18.5, 3.91, '2018-09-15');
+Query OK, 1 row affected (0.070 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s019', 'Naima', 'CSE', '2', 12, 20, 3.7, '2018-08-14');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s002', 'Nafis', 'CSE', '1', 12, 20, 3.86, '2018-08-15');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s003', 'Tasneem', 'CS', '1', 8, 18, 3.57, '2018-08-15');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s004', 'Nahid', 'ECE', '2', 7, 16.5, 3.25, '2018-08-20');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s005', 'Arafat', 'CS', '2', 11, 20, 4.0, '2018-09-13');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s006', 'Tasneem', 'CSE', '1', 12, 17.5, 3.7, '2018-08-15');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s007', 'Muhtadi', 'ECE', '1', 10, 19, 3.67, '2018-09-16');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> INSERT INTO Lab_grades VALUES ('s008', 'Farhana', 'CSE', '2', 6, 15, 2.67, '2018-08-16');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_grades;
++------------+---------+-------+---------+--------------+---------------+------+-----------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | submission_date |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15      |
+| s019       | Naima   | CSE   | 2       |           12 |            20 | 3.70 | 2018-08-14      |
+| s002       | Nafis   | CSE   | 1       |           12 |            20 | 3.86 | 2018-08-15      |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15      |
+| s004       | Nahid   | ECE   | 2       |            7 |          16.5 | 3.25 | 2018-08-20      |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13      |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15      |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16      |
+| s008       | Farhana | CSE   | 2       |            6 |            15 | 2.67 | 2018-08-16      |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+
+9 rows in set (0.006 sec)
+
+MariaDB [SAMIHA]> SELECT student_id, name FROM Lab_grades;
++------------+---------+
+| student_id | name    |
++------------+---------+
+| s001       | Abir    |
+| s019       | Naima   |
+| s002       | Nafis   |
+| s003       | Tasneem |
+| s004       | Nahid   |
+| s005       | Arafat  |
+| s006       | Tasneem |
+| s007       | Muhtadi |
+| s008       | Farhana |
++------------+---------+
+9 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> ALTER TABLE Lab_Grades ADD Project_title CHAR(10);
+Query OK, 0 rows affected (0.014 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [SAMIHA]> SHOW TABLES;
++------------------+
+| Tables_in_samiha |
++------------------+
+| lab_grades       |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_grades;
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | submission_date | Project_title |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15      | NULL          |
+| s019       | Naima   | CSE   | 2       |           12 |            20 | 3.70 | 2018-08-14      | NULL          |
+| s002       | Nafis   | CSE   | 1       |           12 |            20 | 3.86 | 2018-08-15      | NULL          |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15      | NULL          |
+| s004       | Nahid   | ECE   | 2       |            7 |          16.5 | 3.25 | 2018-08-20      | NULL          |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13      | NULL          |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15      | NULL          |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16      | NULL          |
+| s008       | Farhana | CSE   | 2       |            6 |            15 | 2.67 | 2018-08-16      | NULL          |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+9 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> ALTER TABLE Lab_Grades MODIFY COLUMN Project_title
+    -> VARCHAR(50);
+Query OK, 9 rows affected (0.039 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_grades;
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | submission_date | Project_title |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15      | NULL          |
+| s019       | Naima   | CSE   | 2       |           12 |            20 | 3.70 | 2018-08-14      | NULL          |
+| s002       | Nafis   | CSE   | 1       |           12 |            20 | 3.86 | 2018-08-15      | NULL          |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15      | NULL          |
+| s004       | Nahid   | ECE   | 2       |            7 |          16.5 | 3.25 | 2018-08-20      | NULL          |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13      | NULL          |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15      | NULL          |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16      | NULL          |
+| s008       | Farhana | CSE   | 2       |            6 |            15 | 2.67 | 2018-08-16      | NULL          |
++------------+---------+-------+---------+--------------+---------------+------+-----------------+---------------+
+9 rows in set (0.002 sec)
+
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| student_id      | char(4)      | YES  |     | NULL    |       |
+| name            | varchar(30)  | YES  |     | NULL    |       |
+| major           | char(3)      | YES  |     | NULL    |       |
+| section         | char(1)      | YES  |     | NULL    |       |
+| days_present    | int(11)      | YES  |     | NULL    |       |
+| project_marks   | double       | YES  |     | NULL    |       |
+| cgpa            | decimal(3,2) | YES  |     | NULL    |       |
+| submission_date | date         | YES  |     | NULL    |       |
+| Project_title   | varchar(50)  | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+9 rows in set (0.026 sec)
+
+MariaDB [SAMIHA]> ALTER TABLE Lab_Grades DROP COLUMN Project_title;
+Query OK, 0 rows affected (0.015 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| student_id      | char(4)      | YES  |     | NULL    |       |
+| name            | varchar(30)  | YES  |     | NULL    |       |
+| major           | char(3)      | YES  |     | NULL    |       |
+| section         | char(1)      | YES  |     | NULL    |       |
+| days_present    | int(11)      | YES  |     | NULL    |       |
+| project_marks   | double       | YES  |     | NULL    |       |
+| cgpa            | decimal(3,2) | YES  |     | NULL    |       |
+| submission_date | date         | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.028 sec)
+
+MariaDB [SAMIHA]> ALTER TABLE Lab_Grades
+    -> CHANGE COLUMN submission_date sub_date DATE;
+Query OK, 0 rows affected (0.013 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| student_id    | char(4)      | YES  |     | NULL    |       |
+| name          | varchar(30)  | YES  |     | NULL    |       |
+| major         | char(3)      | YES  |     | NULL    |       |
+| section       | char(1)      | YES  |     | NULL    |       |
+| days_present  | int(11)      | YES  |     | NULL    |       |
+| project_marks | double       | YES  |     | NULL    |       |
+| cgpa          | decimal(3,2) | YES  |     | NULL    |       |
+| sub_date      | date         | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.031 sec)
+
+MariaDB [SAMIHA]> DELETE FROM Lab_Grades WHERE Name = 'Naima';
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| student_id    | char(4)      | YES  |     | NULL    |       |
+| name          | varchar(30)  | YES  |     | NULL    |       |
+| major         | char(3)      | YES  |     | NULL    |       |
+| section       | char(1)      | YES  |     | NULL    |       |
+| days_present  | int(11)      | YES  |     | NULL    |       |
+| project_marks | double       | YES  |     | NULL    |       |
+| cgpa          | decimal(3,2) | YES  |     | NULL    |       |
+| sub_date      | date         | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.026 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_grades;
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
+| s002       | Nafis   | CSE   | 1       |           12 |            20 | 3.86 | 2018-08-15 |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15 |
+| s004       | Nahid   | ECE   | 2       |            7 |          16.5 | 3.25 | 2018-08-20 |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15 |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16 |
+| s008       | Farhana | CSE   | 2       |            6 |            15 | 2.67 | 2018-08-16 |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+8 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> DELETE FEOM Lab_grades WHERE Student_id = 's019';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Lab_grades WHERE Student_id = 's019'' at line 1
+MariaDB [SAMIHA]> DELETE FROM Lab_grades WHERE Student_id = 's002';
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [SAMIHA]> DELETE FROM Lab_grades WHERE Days_present < 8;
+Query OK, 2 rows affected (0.004 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_grades;
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15 |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15 |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16 |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT Student_id, Project_marks FROM Lab_grades;
++------------+---------------+
+| Student_id | Project_marks |
++------------+---------------+
+| s001       |          18.5 |
+| s003       |            18 |
+| s005       |            20 |
+| s006       |          17.5 |
+| s007       |            19 |
++------------+---------------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT Name, Project_marks + Days_present*5/12 AS Total_marks FROM Lab_grades;
++---------+--------------+
+| Name    | Total_marks  |
++---------+--------------+
+| Abir    | 22.666666666 |
+| Tasneem | 21.333333333 |
+| Arafat  | 24.583333333 |
+| Tasneem |         22.5 |
+| Muhtadi | 23.166666666 |
++---------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT COUNT(*) FROM Lab_Grades;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT UPPER(Name), LOWER(Name) FROM Lab_Grades;
++-------------+-------------+
+| UPPER(Name) | LOWER(Name) |
++-------------+-------------+
+| ABIR        | abir        |
+| TASNEEM     | tasneem     |
+| ARAFAT      | arafat      |
+| TASNEEM     | tasneem     |
+| MUHTADI     | muhtadi     |
++-------------+-------------+
+5 rows in set (0.003 sec)
+
+MariaDB [SAMIHA]> SELECT Major FROM Lab_Grades;
++-------+
+| Major |
++-------+
+| CS    |
+| CS    |
+| CS    |
+| CSE   |
+| ECE   |
++-------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> &
+    -> SELECT DISTINCT Major FROM Lab_Grades;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '&
+SELECT DISTINCT Major FROM Lab_Grades' at line 1
+MariaDB [SAMIHA]> SELECT DISTINCT Major FROM Lab_Grades;
++-------+
+| Major |
++-------+
+| CS    |
+| CSE   |
+| ECE   |
++-------+
+3 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades ORDER BY Name;
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16 |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15 |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15 |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades ORDER BY Name DESC, Submission_date
+    -> ASC;
+ERROR 1054 (42S22): Unknown column 'Submission_date' in 'order clause'
+MariaDB [SAMIHA]> DESCRIBE Lab_grades;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| student_id    | char(4)      | YES  |     | NULL    |       |
+| name          | varchar(30)  | YES  |     | NULL    |       |
+| major         | char(3)      | YES  |     | NULL    |       |
+| section       | char(1)      | YES  |     | NULL    |       |
+| days_present  | int(11)      | YES  |     | NULL    |       |
+| project_marks | double       | YES  |     | NULL    |       |
+| cgpa          | decimal(3,2) | YES  |     | NULL    |       |
+| sub_date      | date         | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.030 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades ORDER BY Name DESC;
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15 |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15 |
+| s007       | Muhtadi | ECE   | 1       |           10 |            19 | 3.67 | 2018-09-16 |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT Name, Days_present, Project_marks FROM Lab_Grades WHERE
+    -> Project_marks > 17;
++---------+--------------+---------------+
+| Name    | Days_present | Project_marks |
++---------+--------------+---------------+
+| Abir    |           10 |          18.5 |
+| Tasneem |            8 |            18 |
+| Arafat  |           11 |            20 |
+| Tasneem |           12 |          17.5 |
+| Muhtadi |           10 |            19 |
++---------+--------------+---------------+
+5 rows in set (0.010 sec)
+
+MariaDB [SAMIHA]> SELECT Name, Project_marks FROM Lab_Grades WHERE Major = 'CSE';
++---------+---------------+
+| Name    | Project_marks |
++---------+---------------+
+| Tasneem |          17.5 |
++---------+---------------+
+1 row in set (0.005 sec)
+
+MariaDB [SAMIHA]> SELECT Name, Project_marks FROM Lab_Grades WHERE Project_marks
+    -> BETWEEN 17 AND 19;
++---------+---------------+
+| Name    | Project_marks |
++---------+---------------+
+| Abir    |          18.5 |
+| Tasneem |            18 |
+| Tasneem |          17.5 |
+| Muhtadi |            19 |
++---------+---------------+
+4 rows in set (0.004 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Major IN ('CS', 'CSE');
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| student_id | name    | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir    | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
+| s003       | Tasneem | CS    | 1       |            8 |            18 | 3.57 | 2018-08-15 |
+| s005       | Arafat  | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
+| s006       | Tasneem | CSE   | 1       |           12 |          17.5 | 3.70 | 2018-08-15 |
++------------+---------+-------+---------+--------------+---------------+------+------------+
+4 rows in set (0.007 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Project_marks > 18 AND
+    -> Submission_date BETWEEN '2018-08-01' AND '2018-08-31';
+ERROR 1054 (42S22): Unknown column 'Submission_date' in 'where clause'
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Project_marks > 18 AND sub_date BETWEEN '2018-08-01' AND '2018-08-31';
+Empty set (0.008 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Name LIKE 'a%';
++------------+--------+-------+---------+--------------+---------------+------+------------+
+| student_id | name   | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+--------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir   | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
+| s005       | Arafat | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
++------------+--------+-------+---------+--------------+---------------+------+------------+
+2 rows in set (0.005 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Name LIKE '%a%a%';
++------------+--------+-------+---------+--------------+---------------+------+------------+
+| student_id | name   | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+--------+-------+---------+--------------+---------------+------+------------+
+| s005       | Arafat | CS    | 2       |           11 |            20 | 4.00 | 2018-09-13 |
++------------+--------+-------+---------+--------------+---------------+------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [SAMIHA]> SELECT * FROM Lab_Grades WHERE Name LIKE 'a___';
++------------+------+-------+---------+--------------+---------------+------+------------+
+| student_id | name | major | section | days_present | project_marks | cgpa | sub_date   |
++------------+------+-------+---------+--------------+---------------+------+------------+
+| s001       | Abir | CS    | 1       |           10 |          18.5 | 3.91 | 2018-09-15 |
++------------+------+-------+---------+--------------+---------------+------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [SAMIHA]>
+
+
+
+
+
+
